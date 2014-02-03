@@ -51,13 +51,13 @@
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
-				<integer>127</integer>
+				<integer>4</integer>
 				<key>keyword</key>
-				<string>tmux</string>
+				<string>otmux</string>
 				<key>runningsubtext</key>
 				<string>loading...</string>
 				<key>script</key>
-				<string>/usr/bin/ruby feedback.rb</string>
+				<string>/usr/bin/ruby feedback.rb "{query}"</string>
 				<key>subtext</key>
 				<string>Select the TMUX session, create a new one or open in default shell</string>
 				<key>title</key>

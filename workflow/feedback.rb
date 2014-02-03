@@ -4,58 +4,47 @@
 require_relative "bundle/bundler/setup"
 require "alfred"
 
+name = ARGV[0] || ''
 
 Alfred.with_friendly_error do |alfred|
 
   fb = alfred.feedback
 
-  name = ARGV[0]
 
   # get list of tmux sessions
-  sessions = `tmux list-sessions -F "#S"`.split "\n"
+  sessions = `/usr/local/bin/tmux list-sessions -F "#S"`.split "\n"
 
-  # clones sessions for name validation
-  session_names = sessions.clone
+  name = name[1..-1] if name.length > 0
 
-  # if there's a query, try to create a new tmux session with the query as a name
-  if name
-    # validate it start's with a space
-    unless name =~ /^ /
-      fb.add_item({
-                      :uid => '',
-                      :title => 'Invalid parameter',
-                      :subtitle => 'Please leave a space after the tmux command',
-                      :arg => '',
-                      :valid => 'no',
-                  })
-      puts fb.to_xml()
-      exit
-    end
-    # remove the space
-    name = name[1..-1]
-    if session_names.include? name
-      fb.add_item({
-                      :uid => '',
-                      :title => 'Duplicated session name',
-                      :subtitle => "the session #{name} already exists",
-                      :arg => '',
-                      :valid => 'no',
-                  })
-      puts fb.to_xml()
-      exit
-    end
-
-    # show option to create new tmux session
+  if name.length == 0
+    # show default text indicating new session action
     fb.add_item({
-                    :uid => "",
-                    :title => "Create session \"#{name}\"",
-                    :subtitle => "feedback item",
-                    :arg => "A test feedback Item",
-                    :valid => "yes",
+                    :title => 'Write a new session name',
+                    :subtitle => 'add a space after the tmux command and write your new session name',
+                    :valid => 'no',
                 })
-
+  elsif !(ARGV[0] =~ /^ /)
+    # show wrong syntax error
+    fb.add_item({
+                    :title => 'Invalid parameter',
+                    :subtitle => 'Please leave a space after the tmux command',
+                    :valid => 'no',
+                })
+  elsif (sessions + %w(default)).include? name
+    # show duplicated session name error
+    fb.add_item({
+                    :title => 'Duplicated session name',
+                    :subtitle => "the session #{name} already exists",
+                    :valid => 'no',
+                })
   else
-
+    # show new session name action
+    fb.add_item({
+                    :title => "Create session \"#{name}\"",
+                    :subtitle => "creates a new tmux session with a session name: #{name}",
+                    :arg => "2|#{name}",
+                    :valid => 'yes',
+                })
   end
 
   # deletes session default
@@ -64,28 +53,24 @@ Alfred.with_friendly_error do |alfred|
   sessions = sessions.each_with_index.map do |name, i|
     {
         :name => name,
-        :title => "connect to Session #{name}",
+        :title => "connect to session #{name}",
         :arg => "#{i+4}|"
     }
   end
 
   # adds session default to front
-  sessions.unshift({:name => 'default', :title => 'connect to Session default', :arg => 1})
+  sessions.unshift({:name => 'default', :title => 'connect to default session', :arg => '1|'})
 
   # adds base terminal option
-  sessions.unshift({:name => 'zsh', :title => 'launch zsh', :arg => 3})
+  sessions.unshift({:name => 'zsh', :title => 'launch zsh', :arg => '3|'})
 
-  sessions.each_with_index do |session, index|
+  sessions.each do |session|
+    fb.add_item({
+                    :title => session[:title],
+                    :arg => session[:arg],
+                    :valid => 'yes',
+                })
 
   end
-  # add an arbitrary feedback
-  fb.add_item({
-                  :uid => "",
-                  :title => "Just a Test",
-                  :subtitle => "feedback item",
-                  :arg => "A test feedback Item",
-                  :valid => "yes",
-              })
-
   puts fb.to_xml()
 end
