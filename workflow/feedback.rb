@@ -14,38 +14,7 @@ Alfred.with_friendly_error do |alfred|
   # get list of tmux sessions
   sessions = `/usr/local/bin/tmux list-sessions -F "#S"`.split "\n"
 
-  name = name[1..-1] if name.length > 0
-
-  if name.length == 0
-    # show default text indicating new session action
-    fb.add_item({
-                    :title => 'Write a new session name',
-                    :subtitle => 'add a space after the tmux command and write your new session name',
-                    :valid => 'no',
-                })
-  elsif !(ARGV[0] =~ /^ /)
-    # show wrong syntax error
-    fb.add_item({
-                    :title => 'Invalid parameter',
-                    :subtitle => 'Please leave a space after the tmux command',
-                    :valid => 'no',
-                })
-  elsif (sessions + %w(default)).include? name
-    # show duplicated session name error
-    fb.add_item({
-                    :title => 'Duplicated session name',
-                    :subtitle => "the session #{name} already exists",
-                    :valid => 'no',
-                })
-  else
-    # show new session name action
-    fb.add_item({
-                    :title => "Create session \"#{name}\"",
-                    :subtitle => "creates a new tmux session with a session name: #{name}",
-                    :arg => "2|#{name}",
-                    :valid => 'yes',
-                })
-  end
+  name = name[1..-1] if name =~ /^ /
 
   # deletes session default
   sessions.delete_if { |s| s == 'default' }
@@ -59,10 +28,33 @@ Alfred.with_friendly_error do |alfred|
   end
 
   # adds session default to front
-  sessions.unshift({:name => 'default', :title => 'connect to default session', :arg => '1|'})
+  sessions.unshift({:name => 'default', :title => 'connect to default session', :subtitle => 'connects to tmux session named "default"', :arg => '1|'})
 
   # adds base terminal option
-  sessions.unshift({:name => 'zsh', :title => 'launch zsh', :arg => '3|'})
+  sessions.unshift({:name => 'zsh', :title => 'launch zsh', :subtitle => 'launch plain-old zsh, without tmux', :arg => '3|'})
+
+
+  if name.length == 0
+    # show default text indicating new session action
+    fb.add_item({
+                    :title => 'Write a new session name or search an existing one',
+                    :subtitle => 'add a space after the tmux command and write your new session name',
+                    :valid => 'no',
+                })
+  else
+    sessions = sessions.select do |session|
+      true if session[:name].downcase =~ /#{name}/
+    end
+  end
+
+  if sessions.empty?
+    fb.add_item({
+                    :title => "Create session \"#{name}\"",
+                    :subtitle => "creates a new tmux session with a session name: #{name}",
+                    :arg => "2|#{name}",
+                    :valid => 'yes',
+                })
+  end
 
   sessions.each do |session|
     fb.add_item({
