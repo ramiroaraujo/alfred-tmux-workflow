@@ -22,8 +22,8 @@ Alfred.with_friendly_error do |alfred|
   sessions = sessions.each_with_index.map do |name, i|
     {
         :name => name,
-        :title => "connect to session #{name}",
-        :arg => "#{i+4}|"
+        :title => "connect to session \"#{name}\"",
+        :arg => "#{i+4}|#{name}"
     }
   end
 
