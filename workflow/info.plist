@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.tumblr.ramiroaraujo.alfred-ruby-template</string>
+	<string>com.tumblr.ramiroaraujo.alfred-open-path-in-tmux-workflow</string>
 	<key>connections</key>
 	<dict>
-		<key>21557827-8003-42B7-A042-16D4C9278FEC</key>
+		<key>2630B28E-94D3-4EB1-BBDE-5E8BD2724FAA</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>42D05639-3F0F-4760-8214-317167E4173D</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-			</dict>
-		</array>
-		<key>BA17BE41-176A-4E9A-B958-A3F0BEA36829</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>42D05639-3F0F-4760-8214-317167E4173D</string>
+				<string>6968EB3D-9209-4754-B995-1511066DE12F</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -32,80 +21,47 @@
 	<key>createdby</key>
 	<string>Ramiro Araujo</string>
 	<key>description</key>
-	<string>A starting place for developing Ruby based workflow in Alfred</string>
+	<string>Open frontmost Finder's path in tmux default session, a new custom session, or plain-old bash or zsh.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Ruby Based Workflow Template</string>
+	<string>Open in Tmux</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
+				<string>/usr/bin/osascript open_tmux_in_path.applescript "{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>6968EB3D-9209-4754-B995-1511066DE12F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>argumenttype</key>
 				<integer>1</integer>
 				<key>escaping</key>
-				<integer>62</integer>
+				<integer>127</integer>
 				<key>keyword</key>
-				<string>test feedback</string>
+				<string>tmux</string>
 				<key>runningsubtext</key>
-				<string>working...</string>
+				<string>loading...</string>
 				<key>script</key>
-				<string>/usr/bin/ruby ./main.rb {query}</string>
+				<string>/usr/bin/ruby feedback.rb</string>
 				<key>subtext</key>
-				<string>Ruby Based Workflow Template</string>
+				<string>Select the TMUX session, create a new one or open in default shell</string>
 				<key>title</key>
-				<string>Test Alfred Feedback</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>21557827-8003-42B7-A042-16D4C9278FEC</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Ruby Script</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>42D05639-3F0F-4760-8214-317167E4173D</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>argumenttype</key>
-				<integer>2</integer>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>keyword</key>
-				<string>test rescue feedback</string>
-				<key>runningsubtext</key>
-				<string>...</string>
-				<key>script</key>
-				<string>/usr/bin/ruby ./main_with_rescue_feedback.rb {query}</string>
-				<key>subtext</key>
-				<string>Ruby Based Workflow Template</string>
-				<key>title</key>
-				<string>Test Alfred Rescue Feedback</string>
+				<string>Open in TMUX session</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -114,30 +70,27 @@
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
-			<string>BA17BE41-176A-4E9A-B958-A3F0BEA36829</string>
+			<string>2630B28E-94D3-4EB1-BBDE-5E8BD2724FAA</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
 	<string>readme</string>
 	<key>uidata</key>
 	<dict>
-		<key>21557827-8003-42B7-A042-16D4C9278FEC</key>
+		<key>2630B28E-94D3-4EB1-BBDE-5E8BD2724FAA</key>
 		<dict>
 			<key>ypos</key>
-			<real>250.0</real>
+			<real>10</real>
 		</dict>
-		<key>42D05639-3F0F-4760-8214-317167E4173D</key>
+		<key>6968EB3D-9209-4754-B995-1511066DE12F</key>
 		<dict>
 			<key>ypos</key>
-			<real>140.0</real>
-		</dict>
-		<key>BA17BE41-176A-4E9A-B958-A3F0BEA36829</key>
-		<dict>
-			<key>ypos</key>
-			<real>370.0</real>
+			<real>10</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string>https://github.com/ramiroaraujo/alfred-ruby-template</string>
+	<string>https://github.com/ramiroaraujo/alfred-open-path-in-tmux-workflow</string>
 </dict>
 </plist>
