@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/alfred-open-path-in-tmux-workflow.iml" filepath="$PROJECT_DIR$/alfred-open-path-in-tmux-workflow.iml" />
+      <module fileurl="file://$PROJECT_DIR$/alfred-tmux-workflow.iml" filepath="$PROJECT_DIR$/alfred-tmux-workflow.iml" />
     </modules>
   </component>
 </project>

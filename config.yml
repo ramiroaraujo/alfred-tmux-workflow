@@ -1,15 +1,15 @@
 ## workflow build config
 
 # id and name for the workflow (bundle id = domain.id)
-id: alfred-open-path-in-tmux-workflow
+id: alfred-tmux-workflow
 
 # base domain
 domain: com.tumblr.ramiroaraujo
 
-name: Open in Tmux
-description: Open frontmost Finder's path in tmux default session, a new custom session, or plain-old bash or zsh.
+name: Tmux
+description: Tmux session management workflow, able to list, create and kill sessions, connect to them and optionally cd to current Finder's path.
 created_by: Ramiro Araujo
-website: https://github.com/ramiroaraujo/alfred-open-path-in-tmux-workflow
+website: https://github.com/ramiroaraujo/alfred-tmux-workflow
 readme: readme
 
 ## development config

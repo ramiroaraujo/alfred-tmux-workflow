@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.tumblr.ramiroaraujo.alfred-open-path-in-tmux-workflow</string>
+	<string>com.tumblr.ramiroaraujo.alfred-tmux-workflow</string>
 	<key>connections</key>
 	<dict>
 		<key>2630B28E-94D3-4EB1-BBDE-5E8BD2724FAA</key>
@@ -162,6 +162,6 @@
 		</dict>
 	</dict>
 	<key>webaddress</key>
-	<string>https://github.com/ramiroaraujo/alfred-open-path-in-tmux-workflow</string>
+	<string>https://github.com/ramiroaraujo/alfred-tmux-workflow</string>
 </dict>
 </plist>
