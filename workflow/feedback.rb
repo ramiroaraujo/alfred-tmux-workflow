@@ -17,6 +17,7 @@ Alfred.with_friendly_error do |alfred|
   name = name[1..-1] if name =~ /^ /
 
   # deletes session default
+  has_default = sessions.include? 'default'
   sessions.delete_if { |s| s == 'default' }
 
   sessions = sessions.each_with_index.map do |s, i|
@@ -24,15 +25,15 @@ Alfred.with_friendly_error do |alfred|
         :name => s,
         :title => "connect to session \"#{s}\"",
         :subtitle => "open iTerm and connect to tmux session \"#{s}\"",
-        :arg => "#{i+4}|#{s}"
+        :arg => "attach|#{s}"
     }
   end
 
   # adds session default to front
-  sessions.unshift({:name => 'default', :title => 'connect to default session', :subtitle => 'connects to tmux session named "default"', :arg => '1|'})
+  sessions.unshift({:name => 'default', :title => 'connect to default session', :subtitle => 'connects to tmux session named "default"', :arg => "#{has_default ? 'attach':'new'}|default"})
 
   # adds base terminal option
-  sessions.unshift({:name => 'zsh', :title => 'launch bash/zsh', :subtitle => 'launch plain-old bash or zsh, without tmux', :arg => '3|'})
+  sessions.unshift({:name => 'zsh', :title => 'launch bash/zsh', :subtitle => 'launch plain-old bash or zsh, without tmux', :arg => 'shell|'})
 
 
   if name.length == 0
@@ -61,7 +62,7 @@ Alfred.with_friendly_error do |alfred|
     fb.add_item({
                     :title => "Create session \"#{name}\"",
                     :subtitle => "creates a new tmux session with a session name: #{name}",
-                    :arg => "2|#{name}",
+                    :arg => "new|#{name}",
                     :valid => 'yes',
                 })
   end

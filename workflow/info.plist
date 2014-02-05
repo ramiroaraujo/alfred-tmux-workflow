@@ -20,7 +20,7 @@
 				<key>destinationuid</key>
 				<string>0F453C0C-2771-4A8B-8858-2E65B154B6B7</string>
 				<key>modifiers</key>
-				<integer>262144</integer>
+				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string>Open current Finder's path</string>
 			</dict>
@@ -61,8 +61,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>iterm_running=$((`/bin/ps aux | /usr/bin/grep iTerm | /usr/bin/wc -l | /usr/bin/tr -d ' ' | /usr/bin/tr -d '\n'`-3))
-/usr/bin/osascript open_tmux_session.scpt "open|{query}|$iterm_running"</string>
+				<string>/usr/bin/ruby handle-session.rb "{query}|"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -108,8 +107,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>iterm_running=$((`/bin/ps aux | /usr/bin/grep iTerm | /usr/bin/wc -l | /usr/bin/tr -d ' ' | /usr/bin/tr -d '\n'`-3))
-/usr/bin/osascript open_tmux_session.scpt "cd|{query}|$iterm_running"</string>
+				<string>/usr/bin/ruby handle-session.rb "{query}|1"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>

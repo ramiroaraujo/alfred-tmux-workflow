@@ -1,5 +1,12 @@
 # Tmux Workflow for Alfred app
 
+Alfred workflow to manage tmux sessions, integrated with iTerm2. It can list current sessions, connect to them, kill them
+or create a new one. The connect or create action actually opens iTerm2 and connects to the session. It can also open
+a default bash or zsh shell.
+
+In order to open iTerm2
+
+
 Alfred workflow to open current Finder or Path Finder path in iTerm2, in a Tmux session. The workflow is pretty much molded
 to my needs, with a quite opinionated way of handling tmux. Still, I've found there's no default nor preferred way of
 handling iTerm + tmux, say for example the embeded tmux integration in iTerm is quite unconfortable for my taste.
