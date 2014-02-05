@@ -10,7 +10,6 @@ Alfred.with_friendly_error do |alfred|
 
   fb = alfred.feedback
 
-
   # get list of tmux sessions
   sessions = `/usr/local/bin/tmux list-sessions -F "#S"`.split "\n"
 
@@ -20,7 +19,8 @@ Alfred.with_friendly_error do |alfred|
   has_default = sessions.include? 'default'
   sessions.delete_if { |s| s == 'default' }
 
-  sessions = sessions.each_with_index.map do |s, i|
+  # rewrite sessions has hashes with feedback and argument data
+  sessions = sessions.map do |s|
     {
         :name => s,
         :title => "connect to session \"#{s}\"",
@@ -44,11 +44,13 @@ Alfred.with_friendly_error do |alfred|
                     :valid => 'no',
                 })
   else
+    # filter sessions with search input
     sessions = sessions.select do |session|
       true if session[:name].downcase =~ /#{name}/
     end
   end
 
+  # add each session data to Alfred's feedback
   sessions.each do |session|
     fb.add_item({
                     :title => session[:title],
@@ -58,6 +60,7 @@ Alfred.with_friendly_error do |alfred|
                 })
   end
 
+  # if search input present, and search input is not exactly an existing session show create session
   if name.length > 0 && sessions.none? { |s| s[:name] == name }
     fb.add_item({
                     :title => "Create session \"#{name}\"",
