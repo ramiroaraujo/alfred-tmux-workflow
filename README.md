@@ -3,6 +3,8 @@
 Alfred workflow to manage tmux sessions, integrated with iTerm2. It can list current sessions, connect to them, kill them or create a new one. The connect or create action actually opens iTerm2 and connects to the session. It can also open a default bash or zsh shell. Additionally, in all the _open_ actions (new session, connect to session, or bash/zsh shell)
 it can ```cd``` to the current Finder's or Path Finder's directory.
 
+Please note: the workflow _only_ handles tmux sessions. It doesn't handle windows, panes, or any other tmux command.
+
 ## Dependencies
 
 * [iTerm2](http://www.iterm2.com/) installed
