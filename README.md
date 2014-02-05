@@ -1,5 +1,7 @@
 # Tmux Workflow for Alfred app
 
+> Note, this is the pre-mavericks branch. For the Mavericks branch go to the [master branch](https://github.com/ramiroaraujo/alfred-tmux-workflow)
+
 Alfred workflow to manage tmux sessions, integrated with iTerm2. It can list current sessions, connect to them, kill them or create a new one. The connect or create action actually opens iTerm2 and connects to the session. It can also open a default bash or zsh shell. Additionally, in all the _open_ actions (new session, connect to session, or bash/zsh shell)
 it can ```cd``` to the current Finder's or Path Finder's directory.
 
