@@ -1,11 +1,8 @@
 on run command
-    do shell script "echo '" & command & "' >> log.txt"
-
 	set options to my split(command as string, "|")
 	set iterm_running to (item 1 of options) as integer
 	set session_name to item 2 of options
-	set session_create to item 3 of options
-	set change_dir to (item 4 of options) as integer
+	set change_dir to (item 3 of options) as integer
 
 
 	tell application "iTerm"
@@ -31,12 +28,9 @@ on run command
 		end try
 		
 		tell _session
-		    if session_create > 0 then
-                write text "tmux new-session -s \"" & session_name & "\""
-            else
+		    if session_name is not "" then
                 write text "tmux attach -t \"" & session_name & "\""
 		    end if
-		    delay 1
 			if change_dir > 0 then
 				tell i term application "Path Finder"
 					set target_path to "\"" & (the POSIX path of the target of the front finder window) & "\""
