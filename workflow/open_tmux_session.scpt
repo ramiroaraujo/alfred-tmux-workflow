@@ -33,10 +33,8 @@ on run command
 				delay 1
 		    end if
 			if change_dir > 0 then
-				tell i term application "Path Finder"
-					set target_path to "\"" & (the POSIX path of the target of the front finder window) & "\""
-					set change_dir_command to "cd " & target_path
-				end tell
+                set target_path to do shell script "/usr/bin/osascript get_finders_path.scpt"
+                set change_dir_command to "cd " & target_path
 				write text change_dir_command
 				write text "clear"
 			end if
