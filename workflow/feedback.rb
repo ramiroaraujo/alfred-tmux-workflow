@@ -57,7 +57,7 @@ Alfred.with_friendly_error do |alfred|
                 })
   end
 
-  if sessions.none? { |s| s[:name] == name }
+  if name.length > 0 && sessions.none? { |s| s[:name] == name }
     fb.add_item({
                     :title => "Create session \"#{name}\"",
                     :subtitle => "creates a new tmux session with a session name: #{name}",

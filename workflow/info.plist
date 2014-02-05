@@ -61,7 +61,8 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/osascript open_tmux_session.scpt "open|{query}"</string>
+				<string>iterm_running=$((`/bin/ps aux | /usr/bin/grep iTerm | /usr/bin/wc -l | /usr/bin/tr -d ' ' | /usr/bin/tr -d '\n'`-3))
+/usr/bin/osascript open_tmux_session.scpt "open|{query}|$iterm_running"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -107,7 +108,8 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/osascript open_tmux_session.scpt "cd|{query}"</string>
+				<string>iterm_running=$((`/bin/ps aux | /usr/bin/grep iTerm | /usr/bin/wc -l | /usr/bin/tr -d ' ' | /usr/bin/tr -d '\n'`-3))
+/usr/bin/osascript open_tmux_session.scpt "cd|{query}|$iterm_running"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
