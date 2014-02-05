@@ -14,7 +14,7 @@ on run command
 		else
 			if iterm_running > 0 then
 				set _term to the first terminal
-				tell i term application "System Events" to tell process "Terminal.app" to keystroke "t" using command down
+				tell i term application "System Events" to keystroke "t" using command down
 			end if
 		end if
 		
@@ -30,13 +30,13 @@ on run command
 		tell _session
 		    if session_name is not "" then
                 write text "tmux attach -t \"" & session_name & "\""
+				delay 1
 		    end if
 			if change_dir > 0 then
 				tell i term application "Path Finder"
 					set target_path to "\"" & (the POSIX path of the target of the front finder window) & "\""
 					set change_dir_command to "cd " & target_path
 				end tell
-				delay 0.1
 				write text change_dir_command
 				write text "clear"
 			end if
