@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require_relative 'bundle/bundler/setup'
+require 'bundle/bundler/setup'
 require 'alfred'
 
 name = ARGV[0] || ''
