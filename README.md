@@ -14,6 +14,7 @@ Write the ```tmux``` keyword in Alfred to trigger the workflow.
 ![tmux main menu](https://raw.github.com/ramiroaraujo/alfred-tmux-workflow/master/screenshots/tmux-main-menu.png)
 
 The initial menu options are:
+
 1. An initial _not actionable_ menu item indicating to keep writing after the keyword to search/filter or create a new session.
 2. A "launch bash/zsh" action, for simply opening iTerm2 without a tmux session; makes sense for opening current Finder's path, see below.
 3. Option to connect to a default tmux session. It's a session named "default" that will always appear in the menu, and if it doesn't exists it will be automatically created.
