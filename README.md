@@ -31,7 +31,7 @@ If you want to open the current Finder's or [Path Finder's](http://cocoatech.com
 ## Installation
 For OS X 10.9 Mavericks, Download the [alfred-tmux.alfredworkflow](https://github.com/ramiroaraujo/alfred-tmux-workflow/raw/master/alfred-tmux.alfredworkflow) and import to Alfred 2.
 
-For Previous OS X Versions, Download the [alfred-image-optim.alfredworkflow](https://github.com/ramiroaraujo/alfred-image-optim-workflow/raw/pre-mavericks/alfred-tmux.alfredworkflow) and import to Alfred 2.
+For Previous OS X Versions, Download the [alfred-tmux.alfredworkflow](https://github.com/ramiroaraujo/alfred-tmux-workflow/raw/pre-mavericks/alfred-tmux.alfredworkflow) and import to Alfred 2.
 
 ## Changelog
 * _2014-02-05_ - Released
