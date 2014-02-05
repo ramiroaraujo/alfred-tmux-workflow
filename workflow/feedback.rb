@@ -23,6 +23,7 @@ Alfred.with_friendly_error do |alfred|
     {
         :name => name,
         :title => "connect to session \"#{name}\"",
+        :subtitle => "open iTerm and connect to tmux session \"#{name}\"",
         :arg => "#{i+4}|#{name}"
     }
   end
@@ -31,7 +32,7 @@ Alfred.with_friendly_error do |alfred|
   sessions.unshift({:name => 'default', :title => 'connect to default session', :subtitle => 'connects to tmux session named "default"', :arg => '1|'})
 
   # adds base terminal option
-  sessions.unshift({:name => 'zsh', :title => 'launch zsh', :subtitle => 'launch plain-old zsh, without tmux', :arg => '3|'})
+  sessions.unshift({:name => 'zsh', :title => 'launch bash/zsh', :subtitle => 'launch plain-old bash or zsh, without tmux', :arg => '3|'})
 
 
   if name.length == 0
@@ -59,6 +60,7 @@ Alfred.with_friendly_error do |alfred|
   sessions.each do |session|
     fb.add_item({
                     :title => session[:title],
+                    :subtitle => session[:subtitle],
                     :arg => session[:arg],
                     :valid => 'yes',
                 })

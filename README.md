@@ -1,4 +1,4 @@
-# Open in Tmux Workflow for Alfred app
+# Tmux Workflow for Alfred app
 
 Alfred workflow to open current Finder or Path Finder path in iTerm2, in a Tmux session. The workflow is pretty much molded
 to my needs, with a quite opinionated way of handling tmux. Still, I've found there's no default nor preferred way of

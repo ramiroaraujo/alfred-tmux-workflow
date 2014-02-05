@@ -7,7 +7,7 @@ export PATH=$PATH:/usr/local/bin
 # startup a "default" session if none currently exists
 tmux has-session -t default || tmux new-session -s default -d
 
-# order sessions, so that order is default, new session, zsh, and then another existent sessions
+# order sessions, so that order is "default", "new session", "zsh", and then other existent sessions
 IFS='|||'
 read -a sessions <<< "$(tmux list-sessions -F "#S" | tr '\n' '|||')"
 options=(default 'new session' zsh)

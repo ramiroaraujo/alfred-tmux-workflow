@@ -1,12 +1,14 @@
 on run command
     set options to my split(command as string, "|")
-    set num to count options
-    set action_number to item 1 of options
-    set session_name to item 2 of options
-    tell application "Path Finder"
-        set target_path to "\"" & (the POSIX path of the target of the front finder window) & "\""
-        set change_dir_command to "cd " & target_path
-    end tell
+    set command to item 1 of options
+    set action_number to item 2 of options
+    set session_name to item 3 of options
+    if command = "cd" then
+        tell application "Path Finder"
+            set target_path to "\"" & (the POSIX path of the target of the front finder window) & "\""
+            set change_dir_command to "cd " & target_path
+        end tell
+    end if
 
     tell application "System Events"
     	set isRunning to (exists (processes where name is "iTerm"))
@@ -45,9 +47,11 @@ on run command
                 keystroke return
             end if
         end tell
-        delay 0.1
-        write text change_dir_command
-        write text "clear"
+        if command = "cd" then
+            delay 0.1
+            write text change_dir_command
+            write text "clear"
+        end if
     	end tell
     end tell
 end run

@@ -18,6 +18,14 @@
 			</dict>
 			<dict>
 				<key>destinationuid</key>
+				<string>0F453C0C-2771-4A8B-8858-2E65B154B6B7</string>
+				<key>modifiers</key>
+				<integer>262144</integer>
+				<key>modifiersubtext</key>
+				<string>Open current Finder's path</string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
 				<string>387AB091-E835-4DCE-8D45-232C83394ED1</string>
 				<key>modifiers</key>
 				<integer>524288</integer>
@@ -40,11 +48,11 @@
 	<key>createdby</key>
 	<string>Ramiro Araujo</string>
 	<key>description</key>
-	<string>Open frontmost Finder's path in tmux default session, a new custom session, or plain-old bash or zsh.</string>
+	<string>Tmux session management workflow, able to list, create and kill sessions, connect to them and optionally cd to current Finder's path.</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Open in Tmux</string>
+	<string>Tmux</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -53,7 +61,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/osascript open_tmux_in_path.applescript "{query}"</string>
+				<string>/usr/bin/osascript open_tmux_session.scpt "open|{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -72,15 +80,15 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>keyword</key>
-				<string>otmux</string>
+				<string>tmux</string>
 				<key>runningsubtext</key>
 				<string>loading...</string>
 				<key>script</key>
 				<string>/usr/bin/ruby feedback.rb "{query}"</string>
 				<key>subtext</key>
-				<string>Select the TMUX session, create a new one or open in default shell</string>
+				<string>Select the TMUX session, create a new one, kill existing one or open in default shell</string>
 				<key>title</key>
-				<string>Open in TMUX session</string>
+				<string>Manage Tmux sessions</string>
 				<key>type</key>
 				<integer>0</integer>
 				<key>withspace</key>
@@ -90,6 +98,23 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>2630B28E-94D3-4EB1-BBDE-5E8BD2724FAA</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>4</integer>
+				<key>script</key>
+				<string>/usr/bin/osascript open_tmux_session.scpt "cd|{query}"</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>0F453C0C-2771-4A8B-8858-2E65B154B6B7</string>
 			<key>version</key>
 			<integer>0</integer>
 		</dict>
@@ -124,7 +149,7 @@
 				<key>escaping</key>
 				<integer>4</integer>
 				<key>script</key>
-				<string>/usr/bin/ruby kill-session.rb "{query}"</string>
+				<string>/usr/bin/ruby kill-session.rb "kill|{query}"</string>
 				<key>type</key>
 				<integer>0</integer>
 			</dict>
@@ -140,6 +165,11 @@
 	<string>readme</string>
 	<key>uidata</key>
 	<dict>
+		<key>0F453C0C-2771-4A8B-8858-2E65B154B6B7</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
 		<key>2630B28E-94D3-4EB1-BBDE-5E8BD2724FAA</key>
 		<dict>
 			<key>ypos</key>
@@ -148,7 +178,7 @@
 		<key>387AB091-E835-4DCE-8D45-232C83394ED1</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>250</real>
 		</dict>
 		<key>6968EB3D-9209-4754-B995-1511066DE12F</key>
 		<dict>
@@ -158,7 +188,7 @@
 		<key>B27D690D-76BF-4EB9-A88C-44DD2F95311F</key>
 		<dict>
 			<key>ypos</key>
-			<real>130</real>
+			<real>250</real>
 		</dict>
 	</dict>
 	<key>webaddress</key>
