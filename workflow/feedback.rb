@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # encoding: utf-8
 
-require_relative "bundle/bundler/setup"
-require "alfred"
+require_relative 'bundle/bundler/setup'
+require 'alfred'
 
 name = ARGV[0] || ''
 
@@ -19,12 +19,12 @@ Alfred.with_friendly_error do |alfred|
   # deletes session default
   sessions.delete_if { |s| s == 'default' }
 
-  sessions = sessions.each_with_index.map do |name, i|
+  sessions = sessions.each_with_index.map do |s, i|
     {
-        :name => name,
-        :title => "connect to session \"#{name}\"",
-        :subtitle => "open iTerm and connect to tmux session \"#{name}\"",
-        :arg => "#{i+4}|#{name}"
+        :name => s,
+        :title => "connect to session \"#{s}\"",
+        :subtitle => "open iTerm and connect to tmux session \"#{s}\"",
+        :arg => "#{i+4}|#{s}"
     }
   end
 
@@ -48,7 +48,16 @@ Alfred.with_friendly_error do |alfred|
     end
   end
 
-  if sessions.empty?
+  sessions.each do |session|
+    fb.add_item({
+                    :title => session[:title],
+                    :subtitle => session[:subtitle],
+                    :arg => session[:arg],
+                    :valid => 'yes',
+                })
+  end
+
+  if sessions.none? { |s| s[:name] == name }
     fb.add_item({
                     :title => "Create session \"#{name}\"",
                     :subtitle => "creates a new tmux session with a session name: #{name}",
@@ -57,14 +66,5 @@ Alfred.with_friendly_error do |alfred|
                 })
   end
 
-  sessions.each do |session|
-    fb.add_item({
-                    :title => session[:title],
-                    :subtitle => session[:subtitle],
-                    :arg => session[:arg],
-                    :valid => 'yes',
-                })
-
-  end
   puts fb.to_xml()
 end
