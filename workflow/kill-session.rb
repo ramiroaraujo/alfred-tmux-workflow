@@ -9,7 +9,6 @@ unless sessions.include? name
   `/usr/bin/afplay /System/Library/Sounds/Funk.aiff`
   exit 1
 end
-exit 1 unless sessions.include? name
 
 `/usr/local/bin/tmux kill-session -t "#{name}"`
 
