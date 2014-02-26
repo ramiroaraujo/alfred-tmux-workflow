@@ -63,7 +63,7 @@
 				<key>script</key>
 				<string>/usr/bin/ruby handle-session.rb "{query}|"</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -109,7 +109,7 @@
 				<key>script</key>
 				<string>/usr/bin/ruby handle-session.rb "{query}|1"</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
@@ -151,7 +151,7 @@
 				<key>script</key>
 				<string>/usr/bin/ruby kill-session.rb "kill|{query}"</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>5</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
