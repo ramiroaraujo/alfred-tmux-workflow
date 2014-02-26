@@ -29,15 +29,15 @@ on run command
 		
 		tell _session
 		    if session_name is not "" then
-                write text "tmux attach -t \"" & session_name & "\""
-				delay 1
+                write text "tmux attach -d -t \"" & session_name & "\""
 		    end if
 			if change_dir > 0 then
+				delay 1
                 set target_path to do shell script "/usr/bin/osascript get_finders_path.scpt"
                 set change_dir_command to "cd " & target_path
 				write text change_dir_command
-				write text "clear"
 			end if
+            write text "clear"
 		end tell
 	end tell
 end run
