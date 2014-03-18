@@ -32,9 +32,6 @@ Alfred.with_friendly_error do |alfred|
   # adds session default to front
   sessions.unshift({:name => 'default', :title => 'connect to default session', :subtitle => 'connects to tmux session named "default"', :arg => "#{has_default ? 'attach':'new'}|default"})
 
-  # adds base terminal option
-  sessions.unshift({:name => 'zsh', :title => 'launch bash/zsh', :subtitle => 'launch plain-old bash or zsh, without tmux', :arg => 'shell|'})
-
 
   if name.length == 0
     # show default text indicating new session action
