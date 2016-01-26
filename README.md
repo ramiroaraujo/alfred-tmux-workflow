@@ -1,4 +1,6 @@
-# Tmux Workflow for Alfred app
+# (CLOSED) Tmux Workflow for Alfred app
+
+**This project is no longer mantained. Since tmux is command line by nature, I don't find any advantage of managing sessions from within Alfred**
 
 > Note, this is the pre-mavericks branch. For the Mavericks branch go to the [master branch](https://github.com/ramiroaraujo/alfred-tmux-workflow)
 
