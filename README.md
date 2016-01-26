@@ -1,4 +1,6 @@
-# Tmux Workflow for Alfred app
+# (CLOSED) Tmux Workflow for Alfred app
+
+**This project is no longer mantained. Since tmux is command line by nature, I don't find any advantage of managing sessions from within Alfred**
 
 Alfred workflow to manage tmux sessions, integrated with iTerm2. It can list current sessions, connect to them, kill them or create a new one. The connect or create action actually opens iTerm2 and connects to the session. Additionally, in all the _open_ actions (new session or connect to session) it can ```cd``` to the current Finder's or Path Finder's directory.
 
